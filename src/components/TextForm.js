@@ -86,7 +86,7 @@ export default function TextForm(props) {
     }
 
     const handleExtraSpaces = () => {
-        let newText = text.split(/[  ]+/)
+        let newText = text.split(/[ ]+/)
         setText(newText.join(" "))
         props.showAlert("Extra Spaces Removed", "success")
     }
@@ -114,19 +114,19 @@ export default function TextForm(props) {
                         color: props.mode === 'light' ? 'black' : 'white'
                     }} value={text} /*onKeyUp={handleUpClick}*/ onChange={handleOnChange} id="myBox" rows="6"></textarea>
                 </div>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleClearClick}>Clear Text</button>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleSentClick}>Sentence Case</button>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleCopy}>Copy Text</button>
-                <button className="btn btn-primary my-2 mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleUpClick}>Convert to Uppercase</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleLowClick}>Convert to Lowercase</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleClearClick}>Clear Text</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleSentClick}>Sentence Case</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleCopy}>Copy Text</button>
+                <button disabled={text.length===0}className="btn btn-primary my-2 mx-2" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
             </div>
             <div className="container my-3" style={{ color: props.mode === 'light' ? 'black' : 'white' }}>
                 <h2>Your Paragraph Summary</h2>
                 <p>{wordcheck()} words and {text.length} characters</p>
                 <p>{wordcheck() * 0.008} minutes time required to read the Paragraph.</p>
-                <h3>Preview</h3>
-                <p>{text.length > 0 ? text : 'Enter Something in textbox to preview here'}</p>
+                <h3 style={{display : text.length===0?'none':''}}>Preview</h3>
+                <p style={{display : text.length===0?'none':''}}>{text.length > 0 ? text : 'Nothing to preview'}</p>
             </div>
         </>
     )
