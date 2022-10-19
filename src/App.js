@@ -54,8 +54,8 @@ function App() {
       <About mode={mode}/> */}
 
       <Routes>
-        <Route path="/" element={<TextForm showAlert={showAlert} mode={mode} heading="Text Area" />} />
-        <Route path="about" element={<About mode={mode} />} />
+        <Route path="/textutil/" element={<TextForm key="home" showAlert={showAlert} mode={mode} heading="Text Area" />} />
+        <Route path="/textutil/about" element={<About key="about" mode={mode} />} />
       </Routes>
     </>
   );
